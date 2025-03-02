@@ -1,12 +1,4 @@
-@keyframes rotation {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
-#loader-wrapper {
+#loader {
 	background-color: #FFFFFF;
 	position: fixed;
 	top: 0;
@@ -16,15 +8,30 @@
 	height: 100%;
 	text-align: center;
 }
-.loader {
-	width: 40px;
-	height: 40px;
-	border: 5px solid #000000;
-	border-bottom-color: transparent;
-	border-radius: 50%;
-	margin-top:calc(50vh - 20px);
+#loader sl-spinner {
+	font-size: 5vw;
+	--track-width: 0.5vw;
+	margin-top:calc(50vh - 2.5vw);
 	display: inline-block;
-	box-sizing: border-box;
-	-webkit-animation: rotation 1s linear infinite;
-	animation: rotation 1s linear infinite;
+}
+.topmenu {
+	background-color: #ffffff;
+	color: #212124;
+	font-size: x-large;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	border-bottom: #212124 1px solid;
+}
+.topmenu span {
+	font-family: 'Roboto', sans-serif;
+	display: flex;
+	justify-content: left;
+  align-items: center;
+	height: fit-content;
+}
+h1 {
+	font-family: 'Roboto', sans-serif;
+	margin-top: 10vh;
 }

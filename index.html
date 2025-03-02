@@ -2,23 +2,37 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>Hello, world!</title>
+	<title>PC Flipping Helper</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<meta name="description" content="PC Flipping Helper"/>
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<link rel="icon" href="favicon.png">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.0/cdn/themes/dark.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.0/cdn/themes/light.css"/>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.0/cdn/shoelace-autoloader.js"></script>
 </head>
 <body>
-	<div id="loader-wrapper">
-		<div class="loader"></div>
+	<div id="loader">
+		<sl-spinner></sl-spinner>
 	</div>
-	<h1>Hello, world!</h1>
+	<div class="topmenu"><span>PC Flipping Helper</span><sl-icon-button style="float: right;" name="lightbulb" label="theme-swap"></sl-icon-button></div>
+	<h1>A QOL web application for PC flippers.</h1>
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. </p>
+	<sl-button>Click me</sl-button>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		$(window).on('load', function() {
-			$("#loader-wrapper").fadeOut(700);
+			$("#loader").fadeOut(700);
 		});
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			// dark mode
+			$("html").removeClass("sl-theme-light");
+			$("html").addClass("sl-theme-dark");
+		} else {
+			// light mode
+			$("html").removeClass("sl-theme-dark");
+			$("html").addClass("sl-theme-light");
+		}
 	</script>
 </body>
 </html>
