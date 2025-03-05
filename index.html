@@ -17,31 +17,39 @@
 	<ul>
 		<li><a class="active" href="/index.html">PC Flipping Helper</a></li>
 		<li><a href="https://github.com/Killereq-PL/pc-flipping-helper">Github</a></li>
-		<li style="float:right"><!-- <sl-icon-button style="float: right;" name="lightbulb" label="theme-swap"> --></sl-icon-button></li>
+		<li style="float:right"><!-- <sl-icon-button style="float: right;" name="lightbulb" label="theme-swap"></sl-icon-button> --></li>
 	</ul>
-	<div id="home">
+	<div class="page" id="home" style="display: none;">
 		<h1>A QOL web application for PC flippers.</h1>
 		<p>Choose a tool from the following:</p>
 		<div class="card-container">
-			<sl-card class="card-default">
+			<sl-card class="card-default" id="pc-part-upgrader-card">
 				<div slot="header">
 					PC Part Upgrader
 				</div>
 				This tool will help you find the best parts to upgrade your PC build.
 				<div slot="footer">
-					<sl-button variant="primary">Open</sl-button>
+					<sl-button id="pc-part-upgrader-card-button" variant="primary">Open</sl-button>
 				</div>
 			</sl-card>
-			<sl-card class="card-default">
+			<sl-card class="card-default" id="pc-evaluation-tool-card">
 				<div slot="header">
 					PC Evaluation Tool
 				</div>
 				With this tool you can see how much your PC is worth.
 				<div slot="footer">
-					<sl-button variant="primary">Open</sl-button>
+					<sl-button id="pc-evaluation-tool-card-button" variant="primary">Open</sl-button>
 				</div>
 			</sl-card>
 		</div>
+	</div>
+	<div class="page" id="pc-part-upgrader" style="display: none;">
+		<h1>PC Part Upgrader</h1>
+		<p>Choose your current parts:</p>
+	</div>
+	<div class="page" id="pc-evaluation-tool" style="display: none;">
+		<h1>PC Evaluation Tool</h1>
+		<p>Choose the parts in your PC:</p>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
 	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.0/cdn/shoelace-autoloader.js"></script>
@@ -97,7 +105,32 @@
 		$.getJSON("https://raw.githubusercontent.com/docyx/pc-part-dataset/refs/heads/main/data/json/video-card.json", function(data) {
 			gpu_db = data;
 		});
+		$("#pc-part-upgrader-card-button").on("sl-focus", function() {
+			console.log("clicked");
+			$("#home").fadeOut(700, function() {
+				window.location.assign("#pc-part-upgrader");
+				$("#pc-part-upgrader").fadeIn(700);
+			});
+		});
+		$("#pc-evaluation-tool-card-button").on("sl-focus", function() {
+			console.log("clicked");
+			$("#home").fadeOut(700, function() {
+				window.location.assign("#pc-evaluation-tool");
+				$("#pc-evaluation-tool").fadeIn(700);
+			});
+		});
 		$(window).on('load', function() {
+			if (window.location.href.endsWith("#pc-part-upgrader")) {
+				$("#home").fadeOut(700, function() {
+					$("#pc-part-upgrader").fadeIn(700);
+				});
+			} else if (window.location.href.endsWith("#pc-evaluation-tool")) {
+				$("#home").fadeOut(700, function() {
+					$("#pc-evaluation-tool").fadeIn(700);
+				});
+			} else {
+				$("#home").fadeIn(700);
+			}
 			$("#loader").fadeOut(700);
 		});
 	</script>
