@@ -15,7 +15,7 @@
 		<sl-spinner></sl-spinner>
 	</div>
 	<ul>
-		<li><a class="active" href="/index.html">PC Flipping Helper</a></li>
+		<li><a class="active" id="page-reload-button">PC Flipping Helper</a></li>
 		<li><a href="https://github.com/Killereq-PL/pc-flipping-helper">Github</a></li>
 		<li style="float:right"><!-- <sl-icon-button style="float: right;" name="lightbulb" label="theme-swap"></sl-icon-button> --></li>
 	</ul>
@@ -108,23 +108,26 @@
 		$("#pc-part-upgrader-card-button").on("sl-focus", function() {
 			console.log("clicked");
 			$("#home").fadeOut(700, function() {
-				window.location.assign("#pc-part-upgrader");
+				location.assign("#pc-part-upgrader");
 				$("#pc-part-upgrader").fadeIn(700);
 			});
 		});
 		$("#pc-evaluation-tool-card-button").on("sl-focus", function() {
 			console.log("clicked");
 			$("#home").fadeOut(700, function() {
-				window.location.assign("#pc-evaluation-tool");
+				location.assign("#pc-evaluation-tool");
 				$("#pc-evaluation-tool").fadeIn(700);
 			});
 		});
+		$("#page-reload-button").click(function() {
+			location.reload();
+		});
 		$(window).on('load', function() {
-			if (window.location.href.endsWith("#pc-part-upgrader")) {
+			if (location.href.endsWith("#pc-part-upgrader")) {
 				$("#home").fadeOut(700, function() {
 					$("#pc-part-upgrader").fadeIn(700);
 				});
-			} else if (window.location.href.endsWith("#pc-evaluation-tool")) {
+			} else if (location.href.endsWith("#pc-evaluation-tool")) {
 				$("#home").fadeOut(700, function() {
 					$("#pc-evaluation-tool").fadeIn(700);
 				});
