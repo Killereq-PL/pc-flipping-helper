@@ -56,9 +56,11 @@ li a {
 	text-decoration: none;
 	font-family: 'Roboto', sans-serif;
 }
+/*
 li a:hover {
 	background-color: hsl(0, 0%, 15%);	;
 }
+*/
 .card-default {
     max-width: 300px;
 }
