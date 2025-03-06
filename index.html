@@ -120,14 +120,15 @@
 			});
 		});
 		$("#page-reload-button").click(function() {
+			location.hash = "#home"
 			location.reload();
 		});
 		$(window).on('load', function() {
-			if (location.href.endsWith("#pc-part-upgrader")) {
+			if (location.hash.endsWith("pc-part-upgrader")) {
 				$("#home").fadeOut(700, function() {
 					$("#pc-part-upgrader").fadeIn(700);
 				});
-			} else if (location.href.endsWith("#pc-evaluation-tool")) {
+			} else if (location.hash.endsWith("pc-evaluation-tool")) {
 				$("#home").fadeOut(700, function() {
 					$("#pc-evaluation-tool").fadeIn(700);
 				});
